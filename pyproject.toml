@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.6 || ^3.7 || ^3.8"
 docutils = "^0.15.2"
 click = "^7.0"
+janome = "^0.3.10"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
