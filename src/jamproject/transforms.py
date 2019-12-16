@@ -16,5 +16,5 @@ class Tokenize(Transform):
     def apply(self):
         tokenizer = Tokenizer()  # TODO: Performance issue
         for node in self.document.traverse(nodes.paragraph):
-            source = node.children[0].astext()
+            source = node.astext()
             node["tokens"] = tokenizer.tokenize(source)
