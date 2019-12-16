@@ -6,7 +6,7 @@ authors = ["Kazuya Takei <attakei@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.6 || ^3.7 || ^3.8"
 docutils = "^0.15.2"
 click = "^7.0"
 
