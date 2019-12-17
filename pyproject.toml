@@ -16,6 +16,7 @@ mypy = "^0.750"
 pytest = "^5.3.2"
 pytest-pythonpath = "^0.7.3"
 sphinx = "^2.3.0"
+doc8 = "^0.8.0"
 
 [tool.poetry.scripts]
 jam = "jamproject:main"

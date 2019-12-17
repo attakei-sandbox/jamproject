@@ -26,3 +26,4 @@ jobs:
           poetry run black --check src tests docs
           poetry run mypy src tests docs
           poetry run pytest
+          poetry run doc8 -e .rst docs
