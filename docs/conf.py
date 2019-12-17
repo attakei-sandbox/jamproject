@@ -12,7 +12,9 @@ author = "Kazuya Takei"
 release = jamproject.__version__
 
 # General configuration
-extensions = []
+extensions = [
+    "sphinx.ext.autodoc",
+]
 templates_path = ["_templates"]
 language = "ja"
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
