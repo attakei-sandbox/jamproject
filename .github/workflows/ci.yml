@@ -23,6 +23,6 @@ jobs:
           poetry install
       - name: Run CI tasks
         run: |
-          poetry run black --check src tests
-          poetry run mypy src tests
+          poetry run black --check src tests docs
+          poetry run mypy src tests docs
           poetry run pytest
