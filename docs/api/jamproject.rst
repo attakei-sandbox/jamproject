@@ -1,6 +1,13 @@
 jamproject package
 ==================
 
+Submodules
+----------
+
+.. toctree::
+
+   jamproject.core
+
 Module contents
 ---------------
 
