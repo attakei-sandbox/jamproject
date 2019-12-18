@@ -12,7 +12,9 @@ def display_version():
     click.echo(f"{package_name} {__version__}")
 
 
-def collect_all_sources(targets: List[str], extensions: List[str], basepath: Optional[Path]=None) -> List[Path]:
+def collect_all_sources(
+    targets: List[str], extensions: List[str], basepath: Optional[Path] = None
+) -> List[Path]:
     """Collect file sources.
 
     :param targes: Collect target resources(include files and directories)
@@ -24,7 +26,9 @@ def collect_all_sources(targets: List[str], extensions: List[str], basepath: Opt
     for t in targets:
         target = basepath / t
         if target.is_file():
-            sources += [target, ]
+            sources += [
+                target,
+            ]
             continue
         sources += [p for p in target.glob("**/*") if p.suffix in extensions]
     return sources
@@ -32,7 +36,9 @@ def collect_all_sources(targets: List[str], extensions: List[str], basepath: Opt
 
 @click.command()
 @click.option("--version", is_flag=True)
-@click.option("--verbose", "-v", is_flag=True,)
+@click.option(
+    "--verbose", "-v", is_flag=True,
+)
 @click.argument("targets", nargs=-1, type=click.Path(exists=True))
 def cmd(version, verbose, targets):
     if version:
