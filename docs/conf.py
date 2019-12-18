@@ -14,6 +14,7 @@ release = jamproject.__version__
 # General configuration
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx_click.ext",
 ]
 templates_path = ["_templates"]
 language = "ja"
