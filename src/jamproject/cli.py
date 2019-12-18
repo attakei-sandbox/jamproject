@@ -22,7 +22,7 @@ def collect_all_sources(
     :return: Matched files
     """
     basepath = Path.cwd() if basepath is None else basepath
-    sources = []
+    sources: List[Path] = []
     for t in targets:
         target = basepath / t
         if target.is_file():
