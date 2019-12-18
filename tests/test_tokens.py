@@ -1,4 +1,5 @@
 import pytest
+from textwrap import dedent
 from docutils import nodes
 from docutils.core import publish_doctree
 from docutils.readers import Reader
@@ -27,3 +28,16 @@ def test_tokenize_url_reference():
     tokens = paragraph.attributes["tokens"]
     assert len(tokens) == 1
     assert tokens[0].surface == "ここ"
+
+
+def test_tokenize_multiline():
+    source = """
+    本日は晴天なり、
+    という会話。
+    """
+    source = dedent(source).strip()
+    doctree = publish_doctree(source, reader=TokenizeOnlyReader())
+    paragraph: nodes.paragraph = doctree.children[0]
+    assert "tokens" in paragraph.attributes
+    tokens = paragraph.attributes["tokens"]
+    assert len(tokens) == 9
