@@ -4,7 +4,7 @@ from typing import List, Optional
 from docutils import nodes
 from docutils.transforms import Transform
 from janome.tokenizer import Token, Tokenizer
-from .core import Message
+from . import Message
 
 
 class Tokenize(Transform):

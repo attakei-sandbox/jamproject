@@ -3,7 +3,7 @@ from textwrap import dedent
 from docutils import nodes
 from docutils.core import publish_doctree
 from docutils.readers import Reader
-from jamproject.transforms import Tokenize
+from jamproject.core.transforms import Tokenize
 
 
 class TokenizeOnlyReader(Reader):

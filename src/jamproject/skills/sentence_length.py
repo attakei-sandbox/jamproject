@@ -3,7 +3,7 @@
 from typing import Any, Dict, List, Optional
 from janome.tokenizer import Token
 from ..core import Message
-from ..transforms import SkillBase
+from ..core.transforms import SkillBase
 
 
 default_config = {
