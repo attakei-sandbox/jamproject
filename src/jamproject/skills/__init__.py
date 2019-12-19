@@ -7,6 +7,7 @@ from ..core.transforms import SkillTransform
 class SkillBase(object):
     """Skill handle object class.
     """
+
     default_priority = 400
 
     def __init__(self, params=None):

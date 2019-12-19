@@ -16,7 +16,9 @@ def count_length(tokens: TokenRepository) -> int:
 
 
 class Skill(SkillBase):
-    def apply(self, tokens: TokenRepository, params: Optional[Dict[str, Any]]) -> Optional[Message]:
+    def apply(
+        self, tokens: TokenRepository, params: Optional[Dict[str, Any]]
+    ) -> Optional[Message]:
         params = {} if params is None else params
         length = count_length(tokens)
         max_length = params.get("max", default_config["max"])

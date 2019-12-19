@@ -13,10 +13,9 @@ class ReportTranslator(NodeVisitor):
         report = node["report"]
         if not report.has_message():
             return
-        self.body.append([
-            f"{node.source}:{node.line}-",
-            [m.body for m in report.messages],
-        ])
+        self.body.append(
+            [f"{node.source}:{node.line}-", [m.body for m in report.messages],]
+        )
 
     def pass_node(self, node):
         pass
@@ -27,6 +26,7 @@ class ReportTranslator(NodeVisitor):
         if name.startswith("depart_"):
             return self.pass_node
         return super().__getattr__(name)
+
 
 class Writer(BaseWriter):
     def translate(self):
