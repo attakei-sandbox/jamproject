@@ -18,3 +18,37 @@ class Tokenize(Transform):
         for node in self.document.traverse(nodes.paragraph):
             source = node.astext()
             node["tokens"] = tokenizer.tokenize(source)
+
+
+class Skill(object):
+    """Skill handle object class.
+    """
+    def __init__(self, apply):
+        self.apply = apply
+        """Aplly procedure for any nodes.
+        """
+
+    def get_transform(self, document, startnode=None) -> Transform:
+        """Transform initialization wrapper.
+        """
+        transform = self._Transform(document, startnode=None)
+        transform._apply = self.apply
+        return transform
+
+    get_transform.default_priority = 400  # type: ignore
+
+    class _Transform(Transform):
+        """Inner class to transform by skill-behavior
+        """
+        def __init__(self, document, startnode=None):
+            super().__init__(document, startnode)
+            self._apply = None
+
+        def apply(self):
+            for node in self.document.traverse(nodes.paragraph):
+                node.setdefault("report", [])
+                if self._apply is None:
+                    continue
+                msg = self._apply(node["tokens"])
+                if msg:
+                    node["report"].append(msg)
