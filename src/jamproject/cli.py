@@ -5,7 +5,9 @@ from typing import List, Optional
 from docutils.core import publish_file
 from . import __version__
 from .core.readers import Reader
+from .core.writers import Writer
 from .skills.sentence_length import Skill
+
 
 def display_version():
     """Display version.
@@ -50,8 +52,7 @@ def cmd(version, verbose, targets):
     reader = Reader()
     reader.skills = [Skill()]
     for t in target_files:
-        print(t)
-        publish_file(source_path=str(t), reader=reader, writer_name="pseudoxml")
+        publish_file(source_path=str(t), reader=reader, writer=Writer())
 
 
 def main():

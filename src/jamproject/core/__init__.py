@@ -26,6 +26,9 @@ class Report(object):
             return "[1 report]"
         return f"[{msgs} reports]"
 
+    def has_message(self):
+        return len(self.messages) > 0
+
     def append(self, msg: Message):
         self.messages.append(msg)
 
