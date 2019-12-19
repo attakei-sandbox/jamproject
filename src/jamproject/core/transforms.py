@@ -4,7 +4,7 @@ from typing import List, Optional
 from docutils import nodes
 from docutils.transforms import Transform
 from janome.tokenizer import Token, Tokenizer
-from . import Message
+from . import Message, Report, TokenRepository
 
 
 class Tokenize(Transform):
@@ -19,7 +19,7 @@ class Tokenize(Transform):
         tokenizer = Tokenizer()  # TODO: Performance issue
         for node in self.document.traverse(nodes.paragraph):
             source = node.astext()
-            node["tokens"] = tokenizer.tokenize(source)
+            node["tokens"] = TokenRepository(tokenizer.tokenize(source))
 
 
 class SkillTransform(Transform):
@@ -33,7 +33,7 @@ class SkillTransform(Transform):
 
     def apply(self):
         for node in self.document.traverse(nodes.paragraph):
-            node.setdefault("report", [])
+            node.setdefault("report", Report())
             msg = self.skill_proc(node["tokens"], self.skill_params)
             if msg:
                 node["report"].append(msg)

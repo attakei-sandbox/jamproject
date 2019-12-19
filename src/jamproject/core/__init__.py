@@ -12,3 +12,30 @@ class Message(object):
     def __init__(self, body: str):
         self.body: str = body
         """message body"""
+
+
+class Report(object):
+    def __init__(self):
+        self.messages = []
+
+    def __repr__(self):
+        msgs = len(self.messages)
+        if msgs == 0:
+            return "[No reports]"
+        if msgs == 1:
+            return "[1 report]"
+        return f"[{msgs} reports]"
+
+    def append(self, msg: Message):
+        self.messages.append(msg)
+
+
+class TokenRepository(object):
+    def __init__(self, tokens: tuple):
+        self.items = tokens
+
+    def __repr__(self):
+        tokens = len(self.items)
+        if tokens == 1:
+            return "[1 token]"
+        return f"[{tokens} tokens]"
