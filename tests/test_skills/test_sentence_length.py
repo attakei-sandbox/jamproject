@@ -3,16 +3,13 @@ from textwrap import dedent
 from docutils import nodes
 from docutils.core import publish_doctree
 from docutils.readers import Reader
-from jamproject.transforms import Skill, Tokenize
-from jamproject.skills import sentence_length
-
-
-skill = Skill(sentence_length.apply)
+from jamproject.transforms import Tokenize
+from jamproject.skills.sentence_length import Skill
 
 
 class TokenizeOnlyReader(Reader):
     def get_transforms(self):
-        return super().get_transforms() + [Tokenize, skill.get_transform]
+        return super().get_transforms() + [Tokenize, Skill()]
 
 
 def test_safe():
@@ -34,11 +31,11 @@ def test_failure():
 
 
 def test_safe_parameterized():
-    skill = Skill(sentence_length.apply, {"max": 140})
+    skill = Skill({"max": 140})
 
     class CustomReader(Reader):
         def get_transforms(self):
-            return super().get_transforms() + [Tokenize, skill.get_transform]
+            return super().get_transforms() + [Tokenize, skill]
 
     doctree = publish_doctree("本日は晴天なり" * 20, reader=CustomReader())
     paragraph: nodes.paragraph = doctree.children[0]

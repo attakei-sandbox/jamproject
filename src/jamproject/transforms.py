@@ -1,8 +1,10 @@
 """Core custom transforms module
 """
+from typing import List, Optional
 from docutils import nodes
 from docutils.transforms import Transform
-from janome.tokenizer import Tokenizer
+from janome.tokenizer import Token, Tokenizer
+from .core import Message
 
 
 class Tokenize(Transform):
@@ -20,40 +22,35 @@ class Tokenize(Transform):
             node["tokens"] = tokenizer.tokenize(source)
 
 
-class Skill(object):
+class SkillBase(object):
     """Skill handle object class.
     """
+    default_priority = 400
 
-    def __init__(self, apply, params=None):
-        self.apply = apply
-        """Aplly procedure for any nodes.
-        """
+    def __init__(self, params=None):
         self.params = params
 
-    def get_transform(self, document, startnode=None) -> Transform:
+    def apply(self, tokens: List[Token], params):
+        raise NotImplementedError()
+
+    def __call__(self, document, startnode=None) -> Transform:
         """Transform initialization wrapper.
         """
-        transform = self._Transform(document, startnode=None)
-        transform._apply = self.apply
-        transform._params = self.params
-        return transform
+        return SkillTransform(self.apply, self.params, document, startnode=None)
 
-    get_transform.default_priority = 400  # type: ignore
 
-    class _Transform(Transform):
-        """Inner class to transform by skill-behavior
-        """
+class SkillTransform(Transform):
+    """Inner class to transform by skill-behavior
+    """
 
-        def __init__(self, document, startnode=None):
-            super().__init__(document, startnode)
-            self._apply = None
-            self._params = None
+    def __init__(self, skill_proc, skill_params, document, startnode=None):
+        super().__init__(document, startnode)
+        self.skill_proc = skill_proc
+        self.skill_params = skill_params
 
-        def apply(self):
-            for node in self.document.traverse(nodes.paragraph):
-                node.setdefault("report", [])
-                if self._apply is None:
-                    continue
-                msg = self._apply(node["tokens"], self._params)
-                if msg:
-                    node["report"].append(msg)
+    def apply(self):
+        for node in self.document.traverse(nodes.paragraph):
+            node.setdefault("report", [])
+            msg = self.skill_proc(node["tokens"], self.skill_params)
+            if msg:
+                node["report"].append(msg)
