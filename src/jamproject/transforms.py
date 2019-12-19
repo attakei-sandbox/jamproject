@@ -23,7 +23,8 @@ class Tokenize(Transform):
 class Skill(object):
     """Skill handle object class.
     """
-    def __init__(self, apply, params = None):
+
+    def __init__(self, apply, params=None):
         self.apply = apply
         """Aplly procedure for any nodes.
         """
@@ -42,6 +43,7 @@ class Skill(object):
     class _Transform(Transform):
         """Inner class to transform by skill-behavior
         """
+
         def __init__(self, document, startnode=None):
             super().__init__(document, startnode)
             self._apply = None
