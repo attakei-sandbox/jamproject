@@ -31,3 +31,15 @@ def test_failure():
     assert len(report) == 1
     assert '80' in report[0].body
     assert '140' in report[0].body
+
+
+def test_safe_parameterized():
+    skill = Skill(sentence_length.apply, {"max": 140})
+    class CustomReader(Reader):
+        def get_transforms(self):
+            return super().get_transforms() + [Tokenize, skill.get_transform]
+    doctree = publish_doctree("本日は晴天なり" * 20, reader=CustomReader())
+    paragraph: nodes.paragraph = doctree.children[0]
+    assert "report" in paragraph.attributes
+    report = paragraph.attributes["report"]
+    assert len(report) == 0
