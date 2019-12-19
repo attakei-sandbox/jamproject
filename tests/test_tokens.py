@@ -12,7 +12,7 @@ def test_single_text_tokenize(source, tokens_size):
     paragraph: nodes.paragraph = doctree.children[0]
     assert "tokens" in paragraph.attributes
     tokens = paragraph.attributes["tokens"]
-    assert len(tokens) == tokens_size
+    assert len(tokens.items) == tokens_size
 
 
 def test_tokenize_url_reference():
@@ -21,8 +21,8 @@ def test_tokenize_url_reference():
     paragraph: nodes.paragraph = doctree.children[0]
     assert "tokens" in paragraph.attributes
     tokens = paragraph.attributes["tokens"]
-    assert len(tokens) == 1
-    assert tokens[0].surface == "ここ"
+    assert len(tokens.items) == 1
+    assert tokens.items[0].surface == "ここ"
 
 
 def test_tokenize_multiline():
@@ -35,4 +35,4 @@ def test_tokenize_multiline():
     paragraph: nodes.paragraph = doctree.children[0]
     assert "tokens" in paragraph.attributes
     tokens = paragraph.attributes["tokens"]
-    assert len(tokens) == 9
+    assert len(tokens.items) == 9

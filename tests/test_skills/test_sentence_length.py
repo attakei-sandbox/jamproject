@@ -14,7 +14,7 @@ def test_safe():
     paragraph: nodes.paragraph = doctree.children[0]
     assert "report" in paragraph.attributes
     report = paragraph.attributes["report"]
-    assert len(report) == 0
+    assert len(report.messages) == 0
 
 
 def test_failure():
@@ -24,9 +24,9 @@ def test_failure():
     paragraph: nodes.paragraph = doctree.children[0]
     assert "report" in paragraph.attributes
     report = paragraph.attributes["report"]
-    assert len(report) == 1
-    assert "80" in report[0].body
-    assert "140" in report[0].body
+    assert len(report.messages) == 1
+    assert "80" in report.messages[0].body
+    assert "140" in report.messages[0].body
 
 
 def test_safe_parameterized():
@@ -36,4 +36,4 @@ def test_safe_parameterized():
     paragraph: nodes.paragraph = doctree.children[0]
     assert "report" in paragraph.attributes
     report = paragraph.attributes["report"]
-    assert len(report) == 0
+    assert len(report.messages) == 0
