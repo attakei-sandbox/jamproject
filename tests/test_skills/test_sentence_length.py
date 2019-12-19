@@ -2,18 +2,15 @@ import pytest
 from textwrap import dedent
 from docutils import nodes
 from docutils.core import publish_doctree
-from docutils.readers import Reader
+from jamproject.core.readers import Reader
 from jamproject.core.transforms import Tokenize
 from jamproject.skills.sentence_length import Skill
 
 
-class TokenizeOnlyReader(Reader):
-    def get_transforms(self):
-        return super().get_transforms() + [Tokenize, Skill()]
-
-
 def test_safe():
-    doctree = publish_doctree("本日は晴天なり", reader=TokenizeOnlyReader())
+    reader = Reader()
+    reader.skills = [Skill()]
+    doctree = publish_doctree("本日は晴天なり", reader=reader)
     paragraph: nodes.paragraph = doctree.children[0]
     assert "report" in paragraph.attributes
     report = paragraph.attributes["report"]
@@ -21,7 +18,9 @@ def test_safe():
 
 
 def test_failure():
-    doctree = publish_doctree("本日は晴天なり" * 20, reader=TokenizeOnlyReader())
+    reader = Reader()
+    reader.skills = [Skill()]
+    doctree = publish_doctree("本日は晴天なり" * 20, reader=reader)
     paragraph: nodes.paragraph = doctree.children[0]
     assert "report" in paragraph.attributes
     report = paragraph.attributes["report"]
@@ -31,13 +30,9 @@ def test_failure():
 
 
 def test_safe_parameterized():
-    skill = Skill({"max": 140})
-
-    class CustomReader(Reader):
-        def get_transforms(self):
-            return super().get_transforms() + [Tokenize, skill]
-
-    doctree = publish_doctree("本日は晴天なり" * 20, reader=CustomReader())
+    reader = Reader()
+    reader.skills = [Skill({"max": 140})]
+    doctree = publish_doctree("本日は晴天なり" * 20, reader=reader)
     paragraph: nodes.paragraph = doctree.children[0]
     assert "report" in paragraph.attributes
     report = paragraph.attributes["report"]
