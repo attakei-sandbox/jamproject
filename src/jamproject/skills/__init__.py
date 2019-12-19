@@ -1,6 +1,6 @@
 from typing import List
 from docutils.transforms import Transform
-from janome.tokenizer import Token
+from ..core import TokenRepository
 from ..core.transforms import SkillTransform
 
 
@@ -12,7 +12,7 @@ class SkillBase(object):
     def __init__(self, params=None):
         self.params = params
 
-    def apply(self, tokens: List[Token], params):
+    def apply(self, tokens: TokenRepository, params):
         raise NotImplementedError()
 
     def __call__(self, document, startnode=None) -> Transform:
