@@ -5,7 +5,7 @@ jamproject's documentation
    :maxdepth: 2
    :caption: Contents:
 
-   api/modules
+   api/index
 
 Indices and tables
 ==================
