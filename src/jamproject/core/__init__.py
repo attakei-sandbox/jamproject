@@ -15,6 +15,25 @@ class Message(object):
         """message body"""
 
 
+class Report(object):
+    """Report by skills.
+    """
+
+    def __init__(self):
+        self._messages: List[Message] = []
+
+    def __repr__(self):
+        cnt = len(self)
+        if cnt == 0:
+            return "[No reports]"
+        if cnt == 1:
+            return "[1 report]"
+        return f"[{cnt} reports]"
+
+    def __len__(self) -> int:
+        return len(self._messages)
+
+
 class Token(Protocol):
     surface: ClassVar[str]
 

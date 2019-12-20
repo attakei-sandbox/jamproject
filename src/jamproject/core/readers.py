@@ -1,8 +1,9 @@
 """Core custom readers for docutils
 """
 from typing import List, Type
-from docutils import readers, transforms
-from .transforms import Tokenize
+from docutils import readers
+from docutils.transforms import Transform
+from .transforms import InitializeReportTransform, TokenizeTransform
 
 
 class Reader(readers.Reader):
@@ -12,7 +13,9 @@ class Reader(readers.Reader):
     - Tokenize transform
     """
 
-    def get_transforms(self) -> List[Type[transforms.Transform]]:
+    def get_transforms(self) -> List[Type[Transform]]:
         """Return all transforms.
         """
-        return super().get_transforms() + [Tokenize]
+        transforms = super().get_transforms()
+        transforms += [TokenizeTransform, InitializeReportTransform]
+        return transforms

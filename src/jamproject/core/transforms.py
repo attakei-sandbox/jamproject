@@ -3,10 +3,10 @@
 from docutils import nodes
 from docutils.transforms import Transform
 from janome.tokenizer import Tokenizer
-from . import TokenRepository
+from . import Report, TokenRepository
 
 
-class Tokenize(Transform):
+class TokenizeTransform(Transform):
     """Content tokenize transform.
 
     At paragraph and title, tokenize internal content and bind as attribute.
@@ -19,3 +19,14 @@ class Tokenize(Transform):
         for node in self.document.traverse(nodes.paragraph):
             source = node.astext()
             node["tokens"] = TokenRepository(tokenizer.tokenize(source))
+
+
+class InitializeReportTransform(Transform):
+    """
+    """
+
+    default_priority = 91  # Used soon after Tokeninze
+
+    def apply(self):
+        for node in self.document.traverse(nodes.paragraph):
+            node["report"] = Report()
