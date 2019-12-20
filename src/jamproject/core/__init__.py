@@ -35,6 +35,10 @@ class Report(object):
 
 
 class Token(Protocol):
+    """Token interface for tokenize engine.
+
+    Based from Janome.
+    """
     surface: ClassVar[str]
 
 
