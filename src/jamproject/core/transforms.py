@@ -3,6 +3,7 @@
 from docutils import nodes
 from docutils.transforms import Transform
 from janome.tokenizer import Tokenizer
+from . import TokenRepository
 
 
 class Tokenize(Transform):
@@ -17,4 +18,4 @@ class Tokenize(Transform):
         tokenizer = Tokenizer()  # TODO: Performance issue
         for node in self.document.traverse(nodes.paragraph):
             source = node.astext()
-            node["tokens"] = tokenizer.tokenize(source)
+            node["tokens"] = TokenRepository(tokenizer.tokenize(source))

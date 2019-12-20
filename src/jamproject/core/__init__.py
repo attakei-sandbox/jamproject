@@ -1,5 +1,6 @@
 """Core classes for jamproject
 """
+from typing import ClassVar, List, Protocol, Tuple, Union
 
 
 class Message(object):
@@ -12,3 +13,31 @@ class Message(object):
     def __init__(self, body: str):
         self.body: str = body
         """message body"""
+
+
+class Token(Protocol):
+    surface: ClassVar[str]
+
+
+class TokenRepository(object):
+    """Token dataset and accessor.
+    """
+
+    def __init__(self, tokens: Union[Tuple[Token, ...], List[Token]]):
+        self._tokens: Tuple[Token, ...] = tuple(tokens) if isinstance(
+            tokens, list
+        ) else tokens
+
+    def __repr__(self) -> str:
+        cnt = len(self)
+        if cnt == 0:
+            return "[no tokens]"
+        if cnt == 1:
+            return "[1 token]"
+        return f"[{cnt} tokens]"
+
+    def __len__(self) -> int:
+        return len(self._tokens)
+
+    def __getitem__(self, key) -> Token:
+        return self._tokens[key]
