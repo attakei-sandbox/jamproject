@@ -1,4 +1,4 @@
-"""Core custom transforms module
+"""Core custom transforms for docutils
 """
 from docutils import nodes
 from docutils.transforms import Transform
