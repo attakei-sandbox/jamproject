@@ -3,7 +3,7 @@ from click_default_group import DefaultGroup
 from . import __version__
 
 
-@click.group(cls=DefaultGroup, default="lint", default_if_no_args=True)
+@click.group(cls=DefaultGroup, default="run", default_if_no_args=True)
 def cmd():
     pass
 
@@ -16,7 +16,7 @@ def version():
 
 
 @cmd.command()
-def lint():
+def run():
     """Lint files.
     """
     pass
