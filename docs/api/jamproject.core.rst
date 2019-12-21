@@ -11,5 +11,6 @@ Submodules
 
 .. toctree::
 
+   jamproject.core.base
    jamproject.core.readers
    jamproject.core.transforms
