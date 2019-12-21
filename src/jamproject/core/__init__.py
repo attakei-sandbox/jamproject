@@ -1,6 +1,7 @@
 """Core classes for jamproject
 """
-from typing import ClassVar, List, Protocol, Tuple, Union
+from typing import ClassVar, List, Tuple, Union
+from typing_extensions import Protocol
 
 
 class Message(object):
