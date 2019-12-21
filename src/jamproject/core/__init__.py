@@ -39,6 +39,7 @@ class Token(Protocol):
 
     Based from Janome.
     """
+
     surface: ClassVar[str]
 
 
