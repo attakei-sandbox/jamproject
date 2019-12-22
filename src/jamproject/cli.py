@@ -1,4 +1,5 @@
 import click
+from pathlib import Path
 from click_default_group import DefaultGroup
 from docutils.core import publish_file
 from . import __version__
@@ -20,13 +21,27 @@ def version():
 
 
 @cmd.command()
-@click.argument('target', type=click.Path(exists=True), )
-def run(target):
+@click.argument(
+    "targets", type=click.Path(exists=True), nargs=-1,
+)
+def run(targets):
     """Lint files.
     """
     reader = Reader()
     reader.add_skill(reporting.Skill())
-    publish_file(source_path=target, reader=reader, writer=Writer())
+    # Collect files
+    collected = []
+    for target in targets:
+        t = Path(target)
+        if t.is_file():
+            collected.append(target)
+            continue
+        # TODO: lint other extension files?
+        for f in t.glob("**/*.rst"):
+            collected.append(f)
+    # Lint all files
+    for target in collected:
+        publish_file(source_path=target, reader=reader, writer=Writer())
 
 
 def main():
