@@ -13,7 +13,6 @@ class ReportTranslator(NodeVisitor):
         report = node["report"]
         if len(report) <= 0:
             return
-        print(node.pformat())
         self.body.append([
             f"{node.source}:{node.line}-",
             [m.body for m in report._messages],
