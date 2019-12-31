@@ -8,6 +8,7 @@ def load_skills(config: Config) -> List[SkillBase]:
     skills = []
     for k, param in config["skills"].items():
         module = importlib.import_module(param["module"])
-        skill = module.Skill(param)
-        skills.append(skill)
+        if hasattr(module, "Skill"):
+            skill = getattr(module, "Skill")(param)
+            skills.append(skill)
     return skills

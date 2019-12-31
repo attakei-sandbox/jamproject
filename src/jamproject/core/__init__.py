@@ -75,9 +75,4 @@ SkillParams = Dict[str, Any]
 
 SkillProc = Callable[[TokenRepository, SkillParams], Optional[Message]]
 
-
-class Config(TypedDict):
-    """Configuration values
-    """
-
-    skills: Dict[str, SkillParams]
+Config = Dict[str, Any]
