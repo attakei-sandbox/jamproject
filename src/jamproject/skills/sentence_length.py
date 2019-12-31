@@ -20,7 +20,7 @@ class Skill(SkillBase):
                 if not spacing_token.match(t.surface)
             ]
         )
-        if length > config["max_length"]:
+        if length > int(config["max_length"]):
             return Message(
                 f"Sentence length is too long. expected: {config['max_length']}, actually: {length}"
             )
