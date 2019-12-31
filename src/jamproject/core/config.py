@@ -29,12 +29,17 @@ def _parse_config(path: Path) -> Config:
 
 def load_config(path: Path, default=None) -> Config:
     if default is None:
-        default_path = Path(__file__).parent / "default.cfg"
-        config = _parse_config(default_path)
+        config = load_default_config()
     else:
         config = default
     user_cfg = _parse_config(path)
     for k, v in user_cfg.items():
         if v:
             config[k] = v
+    return config
+
+
+def load_default_config() -> Config:
+    default_path = Path(__file__).parent / "default.cfg"
+    config = _parse_config(default_path)
     return config

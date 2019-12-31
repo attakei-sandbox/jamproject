@@ -3,9 +3,10 @@ from pathlib import Path
 from click_default_group import DefaultGroup
 from docutils.core import publish_file
 from . import __version__
+from .core.config import load_config, load_default_config
 from .core.readers import Reader
 from .core.writers import Writer
-from .skills import reporting
+from .core.loaders import load_skills
 
 
 @click.group(cls=DefaultGroup, default="run", default_if_no_args=True)
@@ -27,8 +28,14 @@ def version():
 def run(targets):
     """Lint files.
     """
+    config_path: Path = Path.cwd() / "setup.cfg"
+    if config_path.exists():
+        config = load_config(config_path)
+    else:
+        config = load_default_config()
     reader = Reader()
-    reader.add_skill(reporting.Skill())
+    for skill in load_skills(config):
+        reader.add_skill(skill)
     # Collect files
     collected = []
     for target in targets:
