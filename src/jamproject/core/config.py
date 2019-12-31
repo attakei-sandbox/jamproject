@@ -8,15 +8,6 @@ from . import Config
 
 base_key = "jamproject"
 
-default_config = {
-    "skills": {
-        "sentence_length": {
-            "module": "jamproject.skills.sentence_length",
-            "max_legnth": 80,
-        }
-    }
-}
-
 
 def _parse_config(path: Path) -> Config:
     """Parse configuration file.
@@ -38,7 +29,8 @@ def _parse_config(path: Path) -> Config:
 
 def load_config(path: Path, default=None) -> Config:
     if default is None:
-        config = dict(default_config)
+        default_path = Path(__file__).parent / "default.cfg"
+        config = _parse_config(default_path)
     else:
         config = default
     user_cfg = _parse_config(path)
