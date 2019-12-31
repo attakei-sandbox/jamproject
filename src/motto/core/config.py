@@ -1,4 +1,4 @@
-"""Configuration structure for jamproject
+"""Configuration structure for motto
 """
 from collections import defaultdict
 from configparser import ConfigParser
@@ -7,7 +7,7 @@ from pathlib import Path
 from . import Config
 
 
-base_key = "jamproject"
+base_key = "motto"
 
 
 def _parse_config(path: Path) -> Config:
@@ -20,7 +20,7 @@ def _parse_config(path: Path) -> Config:
     for section in cfg.sections():
         if not section.startswith(f"{base_key}."):
             continue
-        skill_key = section[11:]
+        skill_key = section[(len(base_key) + 1) :]
         # TODO: Linting skill params
         config["skills"][skill_key] = dict(cfg.items(section))  # type: ignore
     return config

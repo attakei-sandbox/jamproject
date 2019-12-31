@@ -1,7 +1,7 @@
-jamproject
-==========
+motto
+=====
 
 .. toctree::
    :maxdepth: 4
 
-   jamproject
+   motto

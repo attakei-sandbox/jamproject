@@ -1,7 +1,7 @@
-jamproject
-==========
+motto
+=====
 
-JAM = Japanese document Analytics Machine
+Japanese sentence linter.
 
 概要
 ----

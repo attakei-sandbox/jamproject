@@ -1,8 +1,8 @@
 from unittest import mock
 from docutils import nodes
 from docutils.core import publish_doctree
-from jamproject.core.base import SkillBase
-from jamproject.core.readers import Reader
+from motto.core.base import SkillBase
+from motto.core.readers import Reader
 
 
 class Skill(SkillBase):

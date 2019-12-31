@@ -1,8 +1,8 @@
 """This skill-module return message if sentence length is more than X.
 """
 import re
-from jamproject.core import Message, SkillParams, TokenRepository
-from jamproject.core.base import SkillBase
+from motto.core import Message, SkillParams, TokenRepository
+from motto.core.base import SkillBase
 
 
 default_config = {"max_length": 80}

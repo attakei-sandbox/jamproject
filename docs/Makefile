@@ -13,7 +13,7 @@ help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 apidoc:
-	sphinx-apidoc -M -e -f -o api --tocfile index ../src/jamproject
+	sphinx-apidoc -M -e -f -o api --tocfile index ../src/motto
 
 .PHONY: help Makefile
 

@@ -1,5 +1,5 @@
 from pathlib import Path
-from jamproject.core import config
+from motto.core import config
 
 
 here = Path(__file__).parent.resolve()

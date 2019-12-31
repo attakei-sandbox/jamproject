@@ -1,5 +1,5 @@
-jamproject's documentation
-==========================
+motto's documentation
+=====================
 
 .. toctree::
    :maxdepth: 2

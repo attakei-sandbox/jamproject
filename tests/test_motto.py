@@ -1,4 +1,4 @@
-from jamproject import __version__
+from motto import __version__
 
 
 def test_version():

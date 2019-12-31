@@ -4,7 +4,7 @@ from .transforms import SkillTransform
 
 
 class SkillBase(object):
-    """Base class of jamproject-skills.
+    """Base class of motto-skills.
     """
 
     default_priority = 400

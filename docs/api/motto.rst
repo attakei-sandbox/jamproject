@@ -1,7 +1,7 @@
-jamproject package
-==================
+motto package
+=============
 
-.. automodule:: jamproject
+.. automodule:: motto
    :members:
    :undoc-members:
    :show-inheritance:
@@ -11,11 +11,12 @@ Subpackages
 
 .. toctree::
 
-   jamproject.core
+   motto.core
+   motto.skills
 
 Submodules
 ----------
 
 .. toctree::
 
-   jamproject.cli
+   motto.cli

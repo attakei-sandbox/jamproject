@@ -1,4 +1,4 @@
-"""Core classes for jamproject
+"""Core classes for motto
 """
 from typing import Any, Callable, ClassVar, Dict, List, Optional, Tuple, Union
 from typing_extensions import Protocol, TypedDict

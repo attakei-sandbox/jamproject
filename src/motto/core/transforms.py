@@ -12,7 +12,7 @@ class TokenizeTransform(Transform):
     At paragraph and title, tokenize internal content and bind as attribute.
     """
 
-    default_priority = 90  # Used before other transforms of jamproject
+    default_priority = 90  # Used before other transforms of motto
 
     def apply(self):
         tokenizer = Tokenizer()  # TODO: Performance issue

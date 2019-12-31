@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from jamproject.core import TokenRepository
-from jamproject.skills.sentence_length import Skill
+from motto.core import TokenRepository
+from motto.skills.sentence_length import Skill
 
 
 @dataclass

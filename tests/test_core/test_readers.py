@@ -3,7 +3,7 @@ from textwrap import dedent
 from docutils import nodes
 from docutils.core import publish_doctree
 from docutils.readers import Reader
-from jamproject.core.readers import Reader
+from motto.core.readers import Reader
 
 
 @pytest.mark.parametrize("source,tokens_size", [("本日は晴天なり", 4), ("毎日が日曜日", 3)])

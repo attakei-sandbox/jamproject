@@ -2,14 +2,14 @@
 
 This directory is premise to work on poetry environment of project.
 """
-import jamproject
+import motto
 
 
 # Project information
-project = "jamproject"
+project = "motto"
 copyright = "2019, Kazuya Takei"
 author = "Kazuya Takei"
-release = jamproject.__version__
+release = motto.__version__
 
 # General configuration
 extensions = [
