@@ -12,3 +12,10 @@ Subpackages
 .. toctree::
 
    jamproject.core
+
+Submodules
+----------
+
+.. toctree::
+
+   jamproject.cli

@@ -1,7 +1,7 @@
 """Core classes for jamproject
 """
-from typing import ClassVar, List, Tuple, Union
-from typing_extensions import Protocol
+from typing import Any, Callable, ClassVar, Dict, List, Optional, Tuple, Union
+from typing_extensions import Protocol, TypedDict
 
 
 class Message(object):
@@ -33,6 +33,9 @@ class Report(object):
 
     def __len__(self) -> int:
         return len(self._messages)
+
+    def add(self, msg: Message):
+        self._messages.append(msg)
 
 
 class Token(Protocol):
@@ -66,3 +69,10 @@ class TokenRepository(object):
 
     def __getitem__(self, key) -> Token:
         return self._tokens[key]
+
+
+SkillParams = Dict[str, Any]
+
+SkillProc = Callable[[TokenRepository, SkillParams], Optional[Message]]
+
+Config = Dict[str, Any]
