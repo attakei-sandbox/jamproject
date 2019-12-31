@@ -1,7 +1,7 @@
 """Core classes for jamproject
 """
 from typing import Any, Callable, ClassVar, Dict, List, Optional, Tuple, Union
-from typing_extensions import Protocol
+from typing_extensions import Protocol, TypedDict
 
 
 class Message(object):
@@ -74,3 +74,10 @@ class TokenRepository(object):
 SkillParams = Dict[str, Any]
 
 SkillProc = Callable[[TokenRepository, SkillParams], Optional[Message]]
+
+
+class Config(TypedDict):
+    """Configuration values
+    """
+
+    skills: Dict[str, SkillParams]
