@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "motto"
 version = "0.1.0"
-description = "Japanese document Analytics Machine"
+description = "Japanese sentence linter platform for reStructuredText"
 authors = ["Kazuya Takei <attakei@gmail.com>"]
 license = "MIT"
 readme = "README.rst"
