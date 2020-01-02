@@ -1,0 +1,63 @@
+=====
+motto
+=====
+
+.. image:: https://github.com/attakei/motto/workflows/Continuous%20Integration/badge.svg
+   :target: https://github.com/attakei/motto/actions
+
+Japanese sentence linter.
+
+概要
+====
+
+(主に)reStructuredTextで書かれた日本語ドキュメントを程よくチェックするツールです
+
+使い方
+======
+
+インストール
+------------
+
+PyPIに登録しているため、 ``pip`` コマンドでインストールが出来ます。
+
+.. code-block:: bash
+
+   pip install motto
+
+コマンド
+--------
+
+``motto`` コマンドで、対象のファイルをチェックします。
+フォルダを指定した場合は、 ``.rst`` ファイルを探索して全てチェックします。
+
+.. code-block:: bash
+
+   # ファイル単体を指定
+   motto README.rst
+   # フォルダ内を指定
+   motto docs/
+
+チェックする項目
+----------------
+
+現在、組み込みで存在するチェックルールは「文章の長さ」のみとなっています。
+「文章の文字数が、80文字以上か(変更可)」をチェックします。
+
+チェック項目の追加
+==================
+
+チェックルールはモジュールとして作成することが出来ます。
+
+* ``motto.core.base.SkillBase`` を継承した、 ``Skill`` クラスを持つモジュールを定義する
+* ``setup.cfg`` 内に、チェックルールを定義する
+
+``Skill`` クラス
+----------------
+
+``proc`` メソッドにて、実際のチェック処理を実装します。
+このメソッドが ``None`` を返さなければ、最終的にレポートとして表示できるようになります。
+
+ライセンス
+==========
+
+MIT Licenseとなっています
