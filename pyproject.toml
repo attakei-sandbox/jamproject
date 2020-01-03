@@ -3,7 +3,7 @@ name = "motto"
 version = "0.1.0"
 description = "Japanese sentence linter platform for reStructuredText"
 authors = ["Kazuya Takei <attakei@gmail.com>"]
-license = "MIT"
+license = "Apache-2.0"
 readme = "README.rst"
 
 [tool.poetry.dependencies]
