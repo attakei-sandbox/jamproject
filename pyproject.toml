@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "motto"
-version = "0.1.0"
+version = "0.1.1"
 description = "Japanese sentence linter platform for reStructuredText"
 authors = ["Kazuya Takei <attakei@gmail.com>"]
 license = "Apache-2.0"
