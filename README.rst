@@ -1,7 +1,16 @@
 motto
 =====
 
-.. image:: https://github.com/attakei/motto/workflows/Continuous%20Integration/badge.svg
+.. image:: https://img.shields.io/pypi/v/motto
+   :alt: PyPI
+   :target: https://pypi.org/project/motto
+
+.. image:: https://img.shields.io/pypi/pyversions/motto
+   :alt: PyPI - Python Version
+   :target: https://pypi.org/project/motto
+
+.. image:: https://github.com/attakei/motto/workflows/Continuous%20Integration/badge.svg?branch=master
+   :alt: GitHub Actions - Continuous Integration
    :target: https://github.com/attakei/motto/actions
 
 docutils-based sentence linter.

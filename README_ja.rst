@@ -2,9 +2,6 @@
 motto
 =====
 
-.. image:: https://github.com/attakei/motto/workflows/Continuous%20Integration/badge.svg
-   :target: https://github.com/attakei/motto/actions
-
 Japanese sentence linter.
 
 概要
