@@ -8,7 +8,7 @@ on:
       - 'v*'
 
 jobs:
-  source-ci:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -19,18 +19,6 @@ jobs:
       - name: Build packages
         run: |
           pip install poetry
-          poetry build
-      - name: Create Release
-        uses: actions/create-release@v1
+          poetry publish --build -u __token__ -p $PYPI_TOKEN
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-      - name: Publish a Python distribution to PyPI
-        uses: pypa/gh-action-pypi-publish@master
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_TOKEN }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
