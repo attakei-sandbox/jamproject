@@ -23,7 +23,9 @@ def _slice_tokens(tokens: Tokens, delimiters: Iterable[Text]) -> SplitResult:
     return tokens[:pos], tokens[pos:]
 
 
-def split_tokens(tokens: Tokens, delimiters: Optional[Iterable[Text]]=None) -> List[Sentence]:
+def split_tokens(
+    tokens: Tokens, delimiters: Optional[Iterable[Text]] = None
+) -> List[Sentence]:
     """
     :param tokens: Source tokens
     :param delemiters: Delimiter patterns list
