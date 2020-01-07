@@ -71,6 +71,8 @@ class TokenRepository(object):
         return self._tokens[key]
 
 
+Sentence = TokenRepository
+
 SkillParams = Dict[str, Any]
 
 SkillProc = Callable[[TokenRepository, SkillParams], Optional[Message]]
