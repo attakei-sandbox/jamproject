@@ -47,8 +47,8 @@ class Token(Protocol):
     surface: ClassVar[str]
 
 
-class TokenRepository(object):
-    """Token dataset and accessor.
+class Sentence(object):
+    """Sentence dataset and accessor.
     """
 
     def __init__(self, tokens: Union[Tuple[Token, ...], List[Token]]):
@@ -71,10 +71,8 @@ class TokenRepository(object):
         return self._tokens[key]
 
 
-Sentence = TokenRepository
-
 SkillParams = Dict[str, Any]
 
-SkillProc = Callable[[TokenRepository, SkillParams], Optional[Message]]
+SkillProc = Callable[[Sentence, SkillParams], Optional[Message]]
 
 Config = Dict[str, Any]

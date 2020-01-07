@@ -3,7 +3,8 @@
 from docutils import nodes
 from docutils.transforms import Transform
 from janome.tokenizer import Tokenizer
-from . import Report, SkillParams, SkillProc, TokenRepository
+from . import Report, Sentence, SkillParams, SkillProc
+from .tokenizers import split_tokens
 
 
 class TokenizeTransform(Transform):
@@ -18,7 +19,8 @@ class TokenizeTransform(Transform):
         tokenizer = Tokenizer()  # TODO: Performance issue
         for node in self.document.traverse(nodes.paragraph):
             source = node.astext()
-            node["tokens"] = TokenRepository(tokenizer.tokenize(source))
+            tokens = tokenizer.tokenize(source)
+            node["sentences"] = split_tokens(tokens)
 
 
 class InitializeReportTransform(Transform):
@@ -48,10 +50,11 @@ class SkillTransform(Transform):
     # TODO: Add test with stub
     def apply(self):
         for node in self.document.traverse(nodes.paragraph):
-            if "tokens" not in node or "report" not in node:
+            if "sentences" not in node or "report" not in node:
                 continue
-            tokens: TokenRepository = node["tokens"]
+            sentences: List[Sentence] = node["sentences"]
             report: Report = node["report"]
-            msg = self._skill_proc(tokens, self._skill_params)
-            if msg:
-                report.add(msg)
+            for sentence in sentences:
+                msg = self._skill_proc(sentence, self._skill_params)
+                if msg:
+                    report.add(msg)
