@@ -10,21 +10,30 @@ from motto.core.readers import Reader
 def test_single_text_tokenize(source, tokens_size):
     doctree = publish_doctree(source, reader=Reader())
     paragraph: nodes.paragraph = doctree.children[0]
-    assert "tokens" in paragraph.attributes
+    assert "sentences" in paragraph.attributes
     assert "report" in paragraph.attributes
-    tokens = paragraph.attributes["tokens"]
-    assert len(tokens) == tokens_size
+    sentences = paragraph.attributes["sentences"]
+    assert len(sentences[0]) == tokens_size
+
+
+@pytest.mark.parametrize("source,sentence_num", [("本日は晴天なり。毎日が日曜日", 2)])
+def test_multiple_text_tokenize(source, sentence_num):
+    doctree = publish_doctree(source, reader=Reader())
+    paragraph: nodes.paragraph = doctree.children[0]
+    assert "sentences" in paragraph.attributes
+    sentences = paragraph.attributes["sentences"]
+    assert len(sentences) == sentence_num
 
 
 def test_tokenize_url_reference():
     source = "`ここ <http://example.com>`_"
     doctree = publish_doctree(source, reader=Reader())
     paragraph: nodes.paragraph = doctree.children[0]
-    assert "tokens" in paragraph.attributes
+    assert "sentences" in paragraph.attributes
     assert "report" in paragraph.attributes
-    tokens = paragraph.attributes["tokens"]
-    assert len(tokens) == 1
-    assert tokens[0].surface == "ここ"
+    sentences = paragraph.attributes["sentences"]
+    assert len(sentences) == 1
+    assert sentences[0][0].surface == "ここ"
 
 
 def test_tokenize_multiline():
@@ -35,7 +44,7 @@ def test_tokenize_multiline():
     source = dedent(source).strip()
     doctree = publish_doctree(source, reader=Reader())
     paragraph: nodes.paragraph = doctree.children[0]
-    assert "tokens" in paragraph.attributes
+    assert "sentences" in paragraph.attributes
     assert "report" in paragraph.attributes
-    tokens = paragraph.attributes["tokens"]
-    assert len(tokens) == 9
+    sentences = paragraph.attributes["sentences"]
+    assert len(sentences[0]) == 9

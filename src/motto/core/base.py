@@ -1,5 +1,5 @@
 from typing import Optional
-from . import Message, SkillParams, TokenRepository
+from . import Message, Sentence, SkillParams
 from .transforms import SkillTransform
 
 
@@ -15,7 +15,7 @@ class SkillBase(object):
     def __call__(self, document, startnode=None) -> SkillTransform:
         return SkillTransform(self.proc, self.params, document, startnode)
 
-    def proc(self, tokens: TokenRepository, params: SkillParams) -> Optional[Message]:
+    def proc(self, tokens: Sentence, params: SkillParams) -> Optional[Message]:
         """Skill implementation for tokens.
         """
         raise NotImplementedError()
