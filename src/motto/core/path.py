@@ -1,7 +1,10 @@
 """Path management.
 """
 from pathlib import Path
-from typing import List
+from typing import AnyStr, List, Union
+
+
+PathLike = Union[AnyStr, Path]
 
 
 def collect_files(files: List[Path], ext: str=None) -> List[Path]:
@@ -24,3 +27,15 @@ def collect_files(files: List[Path], ext: str=None) -> List[Path]:
             rslt.append(f)
             continue
     return rslt
+
+
+def resolve_path(src: PathLike) -> Path:
+    """Generate resolved path object.
+    """
+    if isinstance(src, Path):
+        pass
+    elif isinstance(src, str):
+        src = Path(src)
+    else:
+        raise TypeError(f"{src} must be str or Path")
+    return src.resolve()
