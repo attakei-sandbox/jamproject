@@ -56,7 +56,7 @@ def docutils(targets):
 )
 def sphinx(conf, targets):
     if not targets:
-        targets = (Path(conf).parent, )
+        targets = (Path(conf).parent,)
     targets = tuple(resolve_path(t) for t in targets)
     config_path: Path = Path.cwd() / "setup.cfg"
     if config_path.exists():
@@ -80,7 +80,12 @@ def sphinx(conf, targets):
         if t.startswith("./"):
             t = t[2:]
         app.env.prepare_settings(str(t))
-        publish_file(source_path=target, reader=reader, writer=Writer(), settings_overrides=app.env.settings)
+        publish_file(
+            source_path=target,
+            reader=reader,
+            writer=Writer(),
+            settings_overrides=app.env.settings,
+        )
 
 
 def main():

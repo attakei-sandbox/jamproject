@@ -7,7 +7,7 @@ from typing import AnyStr, List, Union
 PathLike = Union[AnyStr, Path]
 
 
-def collect_files(files: List[Path], ext: str=None) -> List[Path]:
+def collect_files(files: List[Path], ext: str = None) -> List[Path]:
     """Collect files having ext.
 
     :params files: Candidate of files
