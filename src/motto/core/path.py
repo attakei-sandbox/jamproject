@@ -15,7 +15,7 @@ def collect_files(files: List[Path], ext: str = None) -> List[Path]:
     :returns: Globbed **file** list (exclude directory)
     """
     glob = f"**/*" if ext is None else f"**/*.{ext}"
-    rslt = []
+    rslt: List[Path] = []
     for f in files:
         if f.is_dir():
             rslt += [f for f in f.glob(glob) if f.is_file()]
