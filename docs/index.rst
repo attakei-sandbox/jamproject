@@ -5,6 +5,7 @@ motto's documentation
    :maxdepth: 2
    :caption: Contents:
 
+   command
    api/index
 
 Indices and tables
