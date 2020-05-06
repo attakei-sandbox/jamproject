@@ -12,7 +12,7 @@ from .core.writers import Writer
 from .core.loaders import load_skills
 
 
-@click.group(cls=DefaultGroup, default="run", default_if_no_args=True)
+@click.group(cls=DefaultGroup, default="docutils", default_if_no_args=True)
 def cmd():
     pass
 
@@ -28,7 +28,7 @@ def version():
 @click.argument(
     "targets", type=click.Path(exists=True), nargs=-1,
 )
-def run(targets):
+def docutils(targets):
     """Lint files.
     """
     targets = tuple(resolve_path(t) for t in targets)
