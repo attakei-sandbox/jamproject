@@ -5,9 +5,9 @@ from motto.core import path
 here = Path(__file__).parent.resolve()
 
 
-@pytest.mark.parametrize("ext,expect", [(None, 13), ("py", 5)])
+@pytest.mark.parametrize("ext,expect", [(None, 2), ("txt", 1)])
 def test_collect_files__case_ext(ext, expect):
-    files = path.collect_files([here], ext=ext)
+    files = path.collect_files([here / "test_path_data"], ext=ext)
     assert len(files) == expect
 
 
