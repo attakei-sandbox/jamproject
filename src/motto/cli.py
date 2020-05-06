@@ -55,6 +55,8 @@ def docutils(targets):
     "targets", type=click.Path(exists=True), nargs=-1,
 )
 def sphinx(conf, targets):
+    if not targets:
+        targets = (Path(conf).parent, )
     targets = tuple(resolve_path(t) for t in targets)
     config_path: Path = Path.cwd() / "setup.cfg"
     if config_path.exists():
