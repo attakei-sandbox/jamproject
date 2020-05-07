@@ -1,5 +1,5 @@
 from pathlib import Path
-from motto.core import config
+from motto import config
 
 
 here = Path(__file__).parent.resolve()

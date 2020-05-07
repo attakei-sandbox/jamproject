@@ -4,7 +4,7 @@ from collections import defaultdict
 from configparser import ConfigParser
 from typing import Any, Dict
 from pathlib import Path
-from . import Config
+from .core import Config
 
 
 base_key = "motto"
