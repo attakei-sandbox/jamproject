@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install poetry
-          poetry install
+          poetry install -E sphinx
       - name: Run CI tasks
         run: |
           poetry run black --check src tests docs
