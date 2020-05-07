@@ -1,6 +1,6 @@
 from typing import Optional
 from . import Message, Sentence, SkillParams
-from .transforms import SkillTransform
+from ..transforms import SkillTransform
 
 
 class SkillBase(object):

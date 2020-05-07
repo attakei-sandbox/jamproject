@@ -3,7 +3,7 @@
 from docutils import nodes
 from docutils.transforms import Transform
 from janome.tokenizer import Tokenizer
-from . import Report, Sentence, SkillParams, SkillProc
+from .core import Report, Sentence, SkillParams, SkillProc
 from .tokenizers import split_tokens
 
 

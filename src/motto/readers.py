@@ -3,7 +3,7 @@
 from typing import List, Type
 from docutils import readers
 from docutils.transforms import Transform
-from .base import SkillBase
+from .core.base import SkillBase
 from .transforms import InitializeReportTransform, TokenizeTransform
 
 

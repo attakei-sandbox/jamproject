@@ -1,6 +1,6 @@
 import pytest
 from dataclasses import dataclass
-from motto.core.tokenizers import _slice_tokens, split_tokens
+from motto.tokenizers import _slice_tokens, split_tokens
 
 
 @dataclass

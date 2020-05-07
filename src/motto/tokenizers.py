@@ -1,5 +1,5 @@
 from typing import Iterable, List, Optional, Sized, Text, Tuple, Union
-from . import Sentence, Token
+from .core import Sentence, Token
 
 
 DEFAULT_DELIMITERS = [".", "。"]

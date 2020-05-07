@@ -6,9 +6,9 @@ from docutils.core import publish_file
 from . import __version__
 from .core.config import load_config, load_default_config
 from .core.path import collect_files, resolve_path
-from .core.readers import Reader
-from .core.writers import Writer
 from .core.loaders import load_skills
+from .readers import Reader
+from .writers import Writer
 
 
 @click.group(cls=DefaultGroup, default="docutils", default_if_no_args=True)
