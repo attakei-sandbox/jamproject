@@ -3,7 +3,6 @@ import click
 from pathlib import Path
 from click_default_group import DefaultGroup
 from docutils.core import publish_file
-from sphinx.application import Sphinx
 from . import __version__
 from .core.config import load_config, load_default_config
 from .core.path import collect_files, resolve_path
@@ -55,6 +54,11 @@ def docutils(targets):
     "targets", type=click.Path(exists=True), nargs=-1,
 )
 def sphinx(conf, targets):
+    try:
+        from sphinx.application import Sphinx
+    except ImportError:
+        click.echo("sphinx command is require 'sphinx' package.")
+        return
     if not targets:
         targets = (Path(conf).parent,)
     targets = tuple(resolve_path(t) for t in targets)
