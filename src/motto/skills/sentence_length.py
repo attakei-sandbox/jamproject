@@ -2,7 +2,7 @@
 """
 import re
 from motto.core import Message, SkillParams, Sentence
-from motto.core.base import SkillBase
+from motto.skill import SkillBase
 
 
 default_config = {"max_length": 80}

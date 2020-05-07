@@ -1,7 +1,7 @@
 from unittest import mock
 from docutils import nodes
 from docutils.core import publish_doctree
-from motto.core.base import SkillBase
+from motto.skill import SkillBase
 from motto.readers import Reader
 
 

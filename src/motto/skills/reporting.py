@@ -1,7 +1,7 @@
 """This skill-module add report already
 """
 from motto.core import Message
-from motto.core.base import SkillBase
+from motto.skill import SkillBase
 
 
 class Skill(SkillBase):
