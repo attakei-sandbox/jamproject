@@ -5,9 +5,9 @@ from click_default_group import DefaultGroup
 from docutils.core import publish_file
 from . import __version__
 from .core.config import load_config, load_default_config
-from .core.path import collect_files, resolve_path
 from .core.loaders import load_skills
 from .readers import Reader
+from .utils.path import collect_files, resolve_path
 from .writers import Writer
 
 

@@ -1,6 +1,6 @@
 import pytest
 from pathlib import Path
-from motto.core import path
+from motto.utils import path
 
 here = Path(__file__).parent.resolve()
 
