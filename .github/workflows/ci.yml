@@ -23,7 +23,7 @@ jobs:
           poetry install -E sphinx
       - name: Run CI tasks
         run: |
-          poetry run black --check src tests docs
-          poetry run mypy src tests docs
+          poetry run black --check motto tests docs
+          poetry run mypy motto tests docs
           poetry run pytest
           poetry run doc8 -e .rst docs
