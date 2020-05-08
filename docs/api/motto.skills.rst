@@ -10,6 +10,7 @@ Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    motto.skills.reporting
    motto.skills.sentence_length

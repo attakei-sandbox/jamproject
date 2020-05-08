@@ -10,13 +10,22 @@ Subpackages
 -----------
 
 .. toctree::
+   :maxdepth: 4
 
-   motto.core
    motto.skills
+   motto.utils
 
 Submodules
 ----------
 
 .. toctree::
+   :maxdepth: 4
 
    motto.cli
+   motto.config
+   motto.core
+   motto.readers
+   motto.skill
+   motto.tokenizers
+   motto.transforms
+   motto.writers
